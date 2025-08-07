@@ -4,6 +4,8 @@ export interface Post {
   title: string
   content: string
   timestamp: number
+  heroImageURL: string
+  heroImageAltText: string
 }
 
 export interface BlogIndexProps {

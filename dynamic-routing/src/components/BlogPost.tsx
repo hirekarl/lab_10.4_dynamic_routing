@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import type { Post } from "../types"
+import NotFoundPage from "./NotFoundPage"
 import { timestampToDisplayDate } from "../utils"
 
 import posts from "../lib/posts"
@@ -47,15 +48,7 @@ const BlogPost = () => {
     }
   }, [navigate, nextPostSlug, prevPostSlug])
 
-  if (!post)
-    return (
-      <div className="container-fluid p-3">
-        <h1 className="text-center mb-3">Not Found</h1>
-      </div>
-    )
-
-  const gooseImageURL =
-    posts.indexOf(post) !== posts.length - 1 ? "/goose.jpg" : "/postmaster.png"
+  if (!post) return <NotFoundPage />
 
   return (
     <article className="container-fluid p-3">
@@ -72,8 +65,9 @@ const BlogPost = () => {
           </p>
           <div className="d-flex justify-content-around mb-3">
             <img
-              src={gooseImageURL}
+              src={post.heroImageURL}
               className="img-fluid w-75 rounded-3 shadow"
+              alt={post.heroImageAltText}
             />
           </div>
           <p>{post.content}</p>
