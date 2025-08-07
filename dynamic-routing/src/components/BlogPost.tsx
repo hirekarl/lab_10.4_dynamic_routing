@@ -54,6 +54,9 @@ const BlogPost = () => {
       </div>
     )
 
+  const gooseImageURL =
+    posts.indexOf(post) !== posts.length - 1 ? "/goose.jpg" : "/postmaster.png"
+
   return (
     <article className="container-fluid p-3">
       <div className="row">
@@ -68,7 +71,10 @@ const BlogPost = () => {
             </em>
           </p>
           <div className="d-flex justify-content-around mb-3">
-            <img src="/goose.jpg" className="img-fluid w-75 rounded-3 shadow" />
+            <img
+              src={gooseImageURL}
+              className="img-fluid w-75 rounded-3 shadow"
+            />
           </div>
           <p>{post.content}</p>
           <div className="d-flex justify-content-between align-items-center">
