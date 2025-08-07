@@ -4,6 +4,9 @@ import AdminPage from "./components/AdminPage"
 import BlogIndex from "./components/BlogIndex"
 import BlogDetail from "./components/BlogDetail"
 import LoginPage from "./components/LoginPage"
+import NotFoundPage from "./components/NotFoundPage"
+
+import posts from "./lib/posts"
 
 const App = () => {
   return (
@@ -57,10 +60,11 @@ const App = () => {
         </div>
       </nav>
       <Routes>
-        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog" element={<BlogIndex posts={posts} />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   )

@@ -5,3 +5,11 @@ export interface Post {
   content: string
   timestamp: number
 }
+
+export interface BlogIndexProps {
+  posts: Post[]
+}
+
+export interface BlogDetailProps {
+  post: Post
+}
