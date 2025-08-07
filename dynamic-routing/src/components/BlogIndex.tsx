@@ -8,10 +8,17 @@ const BlogIndex = ({ posts }: BlogIndexProps) => {
     <li key={p.id} className="list-group-item">
       <div className="d-flex justify-content-between align-items-center">
         <div>
-          <Link className="link-underline link-underline-opacity-0" to={p.slug}>{p.title}</Link>
+          <Link className="link-underline link-underline-opacity-0" to={p.slug}>
+            {p.title}
+          </Link>
         </div>
         <div>
-          <em>Published {timestampToDisplayDate(p.timestamp)}</em>
+          <em>
+            Published&nbsp;
+            <time dateTime={new Date(p.timestamp).toISOString()}>
+              {timestampToDisplayDate(p.timestamp)}
+            </time>
+          </em>
         </div>
       </div>
     </li>
