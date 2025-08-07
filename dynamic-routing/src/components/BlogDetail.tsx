@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import type { Post } from "../types"
-import posts from "../lib/posts"
 import { timestampToDisplayDate } from "../utils"
+
+import posts from "../lib/posts"
 
 const BlogDetail = () => {
   const { slug } = useParams()
@@ -30,6 +31,21 @@ const BlogDetail = () => {
       setNextPostSlug(nextPost ? nextPost.slug : null)
     }
   }, [post])
+
+  useEffect(() => {
+    const handleKeydown = (e: globalThis.KeyboardEvent) => {
+      if (e.key === "ArrowLeft" && prevPostSlug) {
+        navigate(`/blog/${prevPostSlug}`)
+      } else if (e.key === "ArrowRight" && nextPostSlug) {
+        navigate(`/blog/${nextPostSlug}`)
+      }
+    }
+    window.addEventListener("keydown", handleKeydown)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeydown)
+    }
+  }, [navigate, nextPostSlug, prevPostSlug])
 
   if (!post)
     return (
