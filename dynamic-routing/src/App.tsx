@@ -2,7 +2,7 @@ import "./App.css"
 import { Routes, Route, Link, NavLink } from "react-router-dom"
 import AdminPage from "./components/AdminPage"
 import BlogIndex from "./components/BlogIndex"
-import BlogDetail from "./components/BlogDetail"
+import BlogPost from "./components/BlogPost"
 import LoginPage from "./components/LoginPage"
 import NotFoundPage from "./components/NotFoundPage"
 
@@ -61,7 +61,7 @@ const App = () => {
       </nav>
       <Routes>
         <Route path="/blog" element={<BlogIndex posts={posts} />} />
-        <Route path="/blog/:slug" element={<BlogDetail />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={<NotFoundPage />} />

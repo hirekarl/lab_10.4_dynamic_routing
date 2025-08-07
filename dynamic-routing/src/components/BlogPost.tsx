@@ -5,7 +5,7 @@ import { timestampToDisplayDate } from "../utils"
 
 import posts from "../lib/posts"
 
-const BlogDetail = () => {
+const BlogPost = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
 
@@ -99,4 +99,4 @@ const BlogDetail = () => {
   )
 }
 
-export default BlogDetail
+export default BlogPost
