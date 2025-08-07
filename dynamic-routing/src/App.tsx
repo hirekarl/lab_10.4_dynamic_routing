@@ -14,7 +14,7 @@ const App = () => {
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link to={"/"} className="navbar-brand">
-            My Life with Honk: A Canadian Mail Tale
+            🪿 My Life with Honk: A Canadian Mail Tale
           </Link>
           <button
             className="navbar-toggler"
