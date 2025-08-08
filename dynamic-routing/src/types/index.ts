@@ -15,3 +15,9 @@ export interface BlogIndexProps {
 export interface BlogDetailProps {
   post: Post
 }
+
+export interface AuthContextType {
+  isAuthenticated: boolean
+  login: (() => void) | null
+  logout: (() => void) | null
+}
