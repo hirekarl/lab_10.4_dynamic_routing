@@ -17,13 +17,6 @@ const NotFoundPage = () => {
       <div className="row">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <h1 className="text-center mb-3">404 Not Found 😵</h1>
-          <div className="d-flex justify-content-around mb-3">
-            <img
-              src="/goose2-min.jpg"
-              className="img-fluid w-75 rounded-3 shadow"
-              alt="Honk the goose, hanging out in the park."
-            />
-          </div>
           <p>
             Well, howdy there! Looks like you've wandered off the beaten path a
             bit. This page seems to have flown the coop, much like Honk used to

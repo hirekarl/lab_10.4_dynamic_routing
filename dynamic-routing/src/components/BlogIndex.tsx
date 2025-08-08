@@ -43,13 +43,6 @@ const BlogIndex = ({ posts }: BlogIndexProps) => {
         <div className="row">
           <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
             <h1 className="text-center mb-3">Recent Posts</h1>
-            <div className="d-flex justify-content-around mb-3">
-              <img
-                src="/goose2-min.jpg"
-                className="img-fluid w-75 rounded-3 shadow"
-                alt="Honk the goose, hanging out in the park."
-              />
-            </div>
             <p>
               Welcome to my little corner of rural Eastern Ontario! I'm Walter,
               and this blog started as a chronicle of my rather ambitious, and
