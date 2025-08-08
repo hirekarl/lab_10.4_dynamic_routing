@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams, Navigate } from "react-router-dom"
 import type { Post } from "../types"
 import { timestampToDisplayDate } from "../utils"
+import { AnimatePresence, motion } from "framer-motion"
+import { variants } from "../animation"
 
 import posts from "../lib/posts"
 
@@ -61,51 +63,60 @@ const BlogPost = () => {
   }
 
   return (
-    <article className="container-fluid p-3">
-      <div className="row">
-        <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
-          <h1 className="text-center mb-2 fs-3">{post.title}</h1>
-          <p className="text-center">
-            <em>
-              Published&nbsp;
-              <time dateTime={new Date(post.timestamp).toISOString()}>
-                {timestampToDisplayDate(post.timestamp)}
-              </time>
-            </em>
-          </p>
-          <div className="d-flex justify-content-around mb-3">
-            <img
-              src={post.heroImageURL}
-              className="img-fluid w-75 rounded-3 shadow"
-              alt={post.heroImageAltText}
-            />
-          </div>
-          <p>{post.content}</p>
-          <div className="d-flex justify-content-between align-items-center">
-            <div>
-              {prevPostSlug && (
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={() => navigate(`/blog/${prevPostSlug}`)}>
-                  <i className="bi bi-arrow-left"></i>&nbsp;Previous
-                </button>
-              )}
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={slug}
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        exit="exit">
+        <article className="container-fluid p-3">
+          <div className="row">
+            <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+              <h1 className="text-center mb-2 fs-3">{post.title}</h1>
+              <p className="text-center">
+                <em>
+                  Published&nbsp;
+                  <time dateTime={new Date(post.timestamp).toISOString()}>
+                    {timestampToDisplayDate(post.timestamp)}
+                  </time>
+                </em>
+              </p>
+              <div className="d-flex justify-content-around mb-3">
+                <img
+                  src={post.heroImageURL}
+                  className="img-fluid w-75 rounded-3 shadow"
+                  alt={post.heroImageAltText}
+                />
+              </div>
+              <p>{post.content}</p>
+              <div className="d-flex justify-content-between align-items-center">
+                <div>
+                  {prevPostSlug && (
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      onClick={() => navigate(`/blog/${prevPostSlug}`)}>
+                      <i className="bi bi-arrow-left"></i>&nbsp;Previous
+                    </button>
+                  )}
+                </div>
+                <div>
+                  {nextPostSlug && (
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-primary"
+                      onClick={() => navigate(`/blog/${nextPostSlug}`)}>
+                      Next&nbsp;<i className="bi bi-arrow-right"></i>
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
-            <div>
-              {nextPostSlug && (
-                <button
-                  type="button"
-                  className="btn btn-sm btn-primary"
-                  onClick={() => navigate(`/blog/${nextPostSlug}`)}>
-                  Next&nbsp;<i className="bi bi-arrow-right"></i>
-                </button>
-              )}
-            </div>
           </div>
-        </div>
-      </div>
-    </article>
+        </article>
+      </motion.div>
+    </AnimatePresence>
   )
 }
 

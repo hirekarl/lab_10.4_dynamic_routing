@@ -1,8 +1,9 @@
-import type { BlogIndexProps } from "../types"
-import { Link } from "react-router-dom"
-
 import { timestampToDisplayDate } from "../utils"
 import { useEffect, useState } from "react"
+import type { BlogIndexProps } from "../types"
+import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
+import { variants } from "../animation"
 
 const BlogIndex = ({ posts }: BlogIndexProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -38,7 +39,11 @@ const BlogIndex = ({ posts }: BlogIndexProps) => {
   }
 
   return (
-    <>
+    <motion.div
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit">
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
@@ -64,7 +69,7 @@ const BlogIndex = ({ posts }: BlogIndexProps) => {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   )
 }
 

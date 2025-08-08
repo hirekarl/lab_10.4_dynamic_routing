@@ -9,6 +9,7 @@ import NotFoundPage from "./components/NotFoundPage"
 import Footer from "./components/Footer"
 
 import AuthContextProvider from "./contexts/AuthContextProvider"
+import { AnimatePresence } from "framer-motion"
 
 import posts from "./lib/posts"
 
@@ -18,15 +19,20 @@ const App = () => {
       <div className="flex-grow-1">
         <AuthContextProvider>
           <NavBar />
-          <Routes>
-            <Route path="/" element={<Navigate to={"/blog"} replace />} />
-            <Route path="/blog" element={<BlogIndex posts={posts} />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/not-found" element={<NotFoundPage />} />
-            <Route path="*" element={<Navigate to={"/not-found"} replace />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={<Navigate to={"/blog"} replace />} />
+              <Route path="/blog" element={<BlogIndex posts={posts} />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/not-found" element={<NotFoundPage />} />
+              <Route
+                path="*"
+                element={<Navigate to={"/not-found"} replace />}
+              />
+            </Routes>
+          </AnimatePresence>
         </AuthContextProvider>
       </div>
       <Footer />

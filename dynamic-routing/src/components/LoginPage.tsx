@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import AuthContext from "../contexts/AuthContext"
+import { motion } from "framer-motion"
+import { variants } from "../animation"
 
 const LoginPage = () => {
   const { isAuthenticated, login, logout } = useContext(AuthContext)
@@ -54,14 +56,20 @@ const LoginPage = () => {
   )
 
   return (
-    <div className="container-fluid p-3">
-      <div className="row">
-        <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
-          <h1 className="text-center mb-3">Log In</h1>
-          <div>{content}</div>
+    <motion.div
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit">
+      <div className="container-fluid p-3">
+        <div className="row">
+          <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+            <h1 className="text-center mb-3">Log In</h1>
+            <div>{content}</div>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
