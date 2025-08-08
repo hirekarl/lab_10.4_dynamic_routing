@@ -43,11 +43,15 @@ const BlogIndex = ({ posts }: BlogIndexProps) => {
               fetch the mail. What began as a simple solution to slow deliveries
               quickly turned into an unexpected adventure. Follow along as Honk
               transforms from a feathered menace into&hellip; well, you'll just
-              have to read to find out!
+              have to read to find out! It's been a wild ride, and I'm still
+              trying to make sense of it all.
             </p>
             <p>
-              It's been a wild ride, and I'm still trying to make sense of it
-              all.
+              Oh, and a little tip from Honk himself: when you're reading a
+              post, you can use your <strong>left and right arrow keys</strong>{" "}
+              to easily navigate between posts. We figured it'd make the site
+              easier for&hellip; well, for everyone, especially if you happen to
+              have wings and less dexterous fingers. You're welcome!
             </p>
             <ul className="list-group">{postsList}</ul>
           </div>
