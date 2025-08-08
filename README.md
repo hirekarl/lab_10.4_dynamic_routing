@@ -30,7 +30,7 @@ Furthermore, you will implement a basic authentication system and create a “pr
 This lab will give you hands-on experience with React Router and handling URL parameters.
 
 ## Attributions
-- [goose.jpg](./dynamic-routing/public/goose.jpg): Photo by Oliver Wagenblatt: https://www.pexels.com/photo/close-up-of-a-canadian-goose-on-water-32825967/
-- [goose2.jpg](./dynamic-routing/public/goose2.jpg): Photo by Brett Sayles: https://www.pexels.com/photo/canadian-goose-on-grass-field-1073089/
-- Additional photos ([christmas.png](./dynamic-routing/public/christmas.png), [postmaster.png](./dynamic-routing/public/postmaster.png)) generated with ChatGPT
+- [goose-min.jpg](./dynamic-routing/public/goose-min.jpg): Photo by Oliver Wagenblatt: https://www.pexels.com/photo/close-up-of-a-canadian-goose-on-water-32825967/
+- [goose2-min.jpg](./dynamic-routing/public/goose2-min.jpg): Photo by Brett Sayles: https://www.pexels.com/photo/canadian-goose-on-grass-field-1073089/
+- Additional photos ([christmas-min.png](./dynamic-routing/public/christmas-min.png), [postmaster.png](./dynamic-routing/public/postmaster-min.png)) generated with ChatGPT
 - Blog posts written with Google Gemini
