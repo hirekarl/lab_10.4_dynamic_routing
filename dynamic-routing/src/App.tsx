@@ -15,8 +15,8 @@ import posts from "./lib/posts"
 const App = () => {
   return (
     <div className="d-flex flex-column min-vh-100">
-      <AuthContextProvider>
-        <div className="flex-grow-1">
+      <div className="flex-grow-1">
+        <AuthContextProvider>
           <NavBar />
           <Routes>
             <Route path="/" element={<Navigate to="/blog" replace />} />
@@ -26,8 +26,8 @@ const App = () => {
             <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </div>
-      </AuthContextProvider>
+        </AuthContextProvider>
+      </div>
       <Footer />
     </div>
   )
