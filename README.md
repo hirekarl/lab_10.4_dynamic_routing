@@ -14,7 +14,7 @@
 cd dynamic-routing && npm i && npm run dev
 ```
 
-2. Navigate to http://localhost:5173/blog in the browser.
+2. Navigate to http://localhost:5173/ in the browser.
 
 ### Submission Source
 Top-level application behavior can be found in [`./dynamic-routing/src/App.tsx`](./dynamic-routing/src/App.tsx).
