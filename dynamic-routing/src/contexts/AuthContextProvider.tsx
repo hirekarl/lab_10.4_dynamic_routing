@@ -8,11 +8,11 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   const login = () => {
     setIsAuthenticated(true)
-    navigate("/")
+    navigate("/blog")
   }
   const logout = () => {
     setIsAuthenticated(false)
-    navigate("/")
+    navigate("/blog")
   }
 
   return (

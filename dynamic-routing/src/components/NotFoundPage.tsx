@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 const NotFoundPage = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return null
+  }
+
   return (
     <div className="container-fluid p-3">
       <div className="row">
@@ -21,8 +32,8 @@ const NotFoundPage = () => {
           <p>
             Don't worry, it happens to the best of us. Even a future Postmaster
             General can get a little disoriented sometimes. Try heading back to
-            the <Link to={"/blog"}>Blog</Link>, or maybe just honk really loud and see if that
-            helps!
+            the <Link to={"/blog"}>Blog</Link>, or maybe just honk really loud
+            and see if that helps!
           </p>
         </div>
       </div>

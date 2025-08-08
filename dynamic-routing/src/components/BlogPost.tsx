@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, Navigate } from "react-router-dom"
 import type { Post } from "../types"
-import NotFoundPage from "./NotFoundPage"
 import { timestampToDisplayDate } from "../utils"
 
 import posts from "../lib/posts"
@@ -11,6 +10,7 @@ const BlogPost = () => {
   const navigate = useNavigate()
 
   const [post, setPost] = useState<Post | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [prevPostSlug, setPrevPostSlug] = useState<string | null>(null)
   const [nextPostSlug, setNextPostSlug] = useState<string | null>(null)
 
@@ -19,19 +19,23 @@ const BlogPost = () => {
     if (foundPost) {
       setPost(foundPost)
     }
+    setIsLoading(false)
+
+    return () => setIsLoading(true)
   }, [slug])
 
   useEffect(() => {
     if (post) {
-      const postIndex = posts.indexOf(post)
+      const postIndex = posts.findIndex((p) => p.slug === post.slug)
 
       const prevPost = postIndex > 0 ? posts[postIndex - 1] : null
       setPrevPostSlug(prevPost ? prevPost.slug : null)
 
-      const nextPost = postIndex < posts.length ? posts[postIndex + 1] : null
+      const nextPost =
+        postIndex < posts.length - 1 ? posts[postIndex + 1] : null
       setNextPostSlug(nextPost ? nextPost.slug : null)
     }
-  }, [post])
+  }, [post, slug])
 
   useEffect(() => {
     const handleKeydown = (e: globalThis.KeyboardEvent) => {
@@ -48,7 +52,13 @@ const BlogPost = () => {
     }
   }, [navigate, nextPostSlug, prevPostSlug])
 
-  if (!post) return <NotFoundPage />
+  if (isLoading) {
+    return null
+  }
+
+  if (!post) {
+    return <Navigate to={"/not-found"} />
+  }
 
   return (
     <article className="container-fluid p-3">

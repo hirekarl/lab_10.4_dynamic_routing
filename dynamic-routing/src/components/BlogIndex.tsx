@@ -2,8 +2,11 @@ import type { BlogIndexProps } from "../types"
 import { Link } from "react-router-dom"
 
 import { timestampToDisplayDate } from "../utils"
+import { useEffect, useState } from "react"
 
 const BlogIndex = ({ posts }: BlogIndexProps) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
   const postsList = posts.map((p) => (
     <li key={p.id} className="list-group-item">
       <div className="d-flex justify-content-between align-items-center">
@@ -23,6 +26,17 @@ const BlogIndex = ({ posts }: BlogIndexProps) => {
       </div>
     </li>
   ))
+
+  useEffect(() => {
+    setIsLoading(false)
+
+    return () => setIsLoading(true)
+  }, [])
+
+  if (isLoading) {
+    return null
+  }
+
   return (
     <>
       <div className="container-fluid p-3">

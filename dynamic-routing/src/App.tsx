@@ -19,12 +19,13 @@ const App = () => {
         <AuthContextProvider>
           <NavBar />
           <Routes>
-            <Route path="/" element={<Navigate to="/blog" replace />} />
+            <Route path="/" element={<Navigate to={"/blog"} replace />} />
             <Route path="/blog" element={<BlogIndex posts={posts} />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/admin" element={<AdminPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/not-found" element={<NotFoundPage />} />
+            <Route path="*" element={<Navigate to={"/not-found"} replace />} />
           </Routes>
         </AuthContextProvider>
       </div>
