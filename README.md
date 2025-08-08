@@ -32,5 +32,5 @@ This lab will give you hands-on experience with React Router and handling URL pa
 ## Attributions
 - [goose-min.jpg](./dynamic-routing/public/goose-min.jpg): Photo by Oliver Wagenblatt: https://www.pexels.com/photo/close-up-of-a-canadian-goose-on-water-32825967/
 - [goose2-min.jpg](./dynamic-routing/public/goose2-min.jpg): Photo by Brett Sayles: https://www.pexels.com/photo/canadian-goose-on-grass-field-1073089/
-- Additional photos ([christmas-min.png](./dynamic-routing/public/christmas-min.png), [postmaster.png](./dynamic-routing/public/postmaster-min.png)) generated with ChatGPT
-- Blog posts written with Google Gemini
+- Additional photos ([christmas-min.png](./dynamic-routing/public/christmas-min.png), [postmaster-min.png](./dynamic-routing/public/postmaster-min.png)) made with ChatGPT
+- Blog posts and site copy written with Google Gemini
