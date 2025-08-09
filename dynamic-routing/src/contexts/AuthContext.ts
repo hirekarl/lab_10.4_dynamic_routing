@@ -1,10 +1,13 @@
 import { createContext } from "react"
-import type { AuthContextType } from "../types"
 
-const AuthContext = createContext<AuthContextType>({
+export interface AuthContextType {
+  isAuthenticated: boolean
+  login: (() => void) | null
+  logout: (() => void) | null
+}
+
+export const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   login: null,
   logout: null,
 })
-
-export default AuthContext

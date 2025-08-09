@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { Navigate } from "react-router-dom"
-import AuthContext from "../contexts/AuthContext"
 import { motion } from "framer-motion"
 import { variants } from "../animation"
+import { AuthContext, type AuthContextType } from "../contexts/AuthContext"
 
 const AdminPage = () => {
-  const { isAuthenticated } = useContext(AuthContext)
+  const { isAuthenticated } = useContext<AuthContextType>(AuthContext)
 
   if (!isAuthenticated) return <Navigate to={"/login"} />
 

@@ -7,17 +7,3 @@ export interface Post {
   heroImageURL: string
   heroImageAltText: string
 }
-
-export interface BlogIndexProps {
-  posts: Post[]
-}
-
-export interface BlogDetailProps {
-  post: Post
-}
-
-export interface AuthContextType {
-  isAuthenticated: boolean
-  login: (() => void) | null
-  logout: (() => void) | null
-}

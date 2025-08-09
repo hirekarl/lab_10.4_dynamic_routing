@@ -1,15 +1,47 @@
 import { Link, NavLink } from "react-router-dom"
 import { useContext } from "react"
-import AuthContext from "../contexts/AuthContext"
+import { AuthContext, type AuthContextType } from "../contexts/AuthContext"
 
 const NavBar = () => {
-  const { isAuthenticated, logout } = useContext(AuthContext)
+  const { isAuthenticated, logout } = useContext<AuthContextType>(AuthContext)
 
   const handleLogout = () => {
     if (logout) {
       logout()
     }
   }
+
+  const authContent = !isAuthenticated ? (
+    <li className="nav-item">
+      <NavLink
+        to="/login"
+        className={({ isActive }) =>
+          isActive ? "nav-link active" : "nav-link"
+        }>
+        Login
+      </NavLink>
+    </li>
+  ) : (
+    <>
+      <li className="nav-item">
+        <NavLink
+          to="/admin"
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }>
+          Admin
+        </NavLink>
+      </li>
+      <li className="nav-item d-flex align-items-center">
+        <button
+          type="button"
+          className="btn btn-sm btn-primary"
+          onClick={handleLogout}>
+          Logout
+        </button>
+      </li>
+    </>
+  )
 
   return (
     <nav className="sticky-top navbar navbar-expand-lg bg-body-tertiary">
@@ -38,38 +70,7 @@ const NavBar = () => {
                 Blog
               </NavLink>
             </li>
-            {!isAuthenticated && (
-              <li className="nav-item">
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? "nav-link active" : "nav-link"
-                  }>
-                  Login
-                </NavLink>
-              </li>
-            )}
-            {isAuthenticated && (
-              <>
-                <li className="nav-item">
-                  <NavLink
-                    to="/admin"
-                    className={({ isActive }) =>
-                      isActive ? "nav-link active" : "nav-link"
-                    }>
-                    Admin
-                  </NavLink>
-                </li>
-                <li className="nav-item d-flex align-items-center">
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-primary"
-                    onClick={handleLogout}>
-                    Logout
-                  </button>
-                </li>
-              </>
-            )}
+            {authContent}
           </ul>
         </div>
       </div>

@@ -1,16 +1,16 @@
 import { useState, type ReactNode } from "react"
 import { useNavigate } from "react-router-dom"
-import AuthContext from "./AuthContext"
+import { AuthContext } from "./AuthContext"
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const navigate = useNavigate()
 
-  const login = () => {
+  const login = (): void => {
     setIsAuthenticated(true)
     navigate("/blog")
   }
-  const logout = () => {
+  const logout = (): void => {
     setIsAuthenticated(false)
     navigate("/blog")
   }

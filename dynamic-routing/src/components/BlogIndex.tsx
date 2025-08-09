@@ -1,9 +1,13 @@
 import { timestampToDisplayDate } from "../utils"
 import { useEffect, useState } from "react"
-import type { BlogIndexProps } from "../types"
+import type { Post } from "../types"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { variants } from "../animation"
+
+interface BlogIndexProps {
+  posts: Post[]
+}
 
 const BlogIndex = ({ posts }: BlogIndexProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)

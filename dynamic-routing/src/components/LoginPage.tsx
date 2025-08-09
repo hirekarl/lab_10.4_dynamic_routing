@@ -1,22 +1,19 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import AuthContext from "../contexts/AuthContext"
 import { motion } from "framer-motion"
 import { variants } from "../animation"
+import { AuthContext, type AuthContextType } from "../contexts/AuthContext"
 
 const LoginPage = () => {
-  const { isAuthenticated, login, logout } = useContext(AuthContext)
+  const { isAuthenticated, login, logout } =
+    useContext<AuthContextType>(AuthContext)
 
-  const handleLogin = () => {
-    if (login) {
-      login()
-    }
+  const handleLogin = (): void => {
+    if (login) login()
   }
 
-  const handleLogout = () => {
-    if (logout) {
-      logout()
-    }
+  const handleLogout = (): void => {
+    if (logout) logout()
   }
 
   const content = !isAuthenticated ? (
