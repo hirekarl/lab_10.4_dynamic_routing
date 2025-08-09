@@ -12,7 +12,7 @@ export const variants: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.15,
-      ease: "easeOut",
+      ease: "easeIn",
     },
   },
   exit: {
@@ -21,7 +21,7 @@ export const variants: Variants = {
     filter: "blur(5px)",
     transition: {
       duration: 0.15,
-      ease: "easeIn",
+      ease: "easeOut",
     },
   },
 }
