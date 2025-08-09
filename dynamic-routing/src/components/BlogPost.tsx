@@ -13,8 +13,6 @@ const BlogPost = () => {
 
   const [post, setPost] = useState<Post | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [prevPostSlug, setPrevPostSlug] = useState<string | null>(null)
-  const [nextPostSlug, setNextPostSlug] = useState<string | null>(null)
 
   useEffect(() => {
     const foundPost = posts.find((p) => p.slug === slug)
@@ -26,18 +24,18 @@ const BlogPost = () => {
     return () => setIsLoading(true)
   }, [slug])
 
-  useEffect(() => {
-    if (post) {
-      const postIndex = posts.findIndex((p) => p.slug === post.slug)
+  let prevPostSlug: string | null = null
+  let nextPostSlug: string | null = null
 
-      const prevPost = postIndex > 0 ? posts[postIndex - 1] : null
-      setPrevPostSlug(prevPost ? prevPost.slug : null)
+  if (post) {
+    const postIndex = posts.findIndex((p) => p.slug === post.slug)
 
-      const nextPost =
-        postIndex < posts.length - 1 ? posts[postIndex + 1] : null
-      setNextPostSlug(nextPost ? nextPost.slug : null)
-    }
-  }, [post, slug])
+    const prevPost = postIndex > 0 ? posts[postIndex - 1] : null
+    prevPostSlug = prevPost ? prevPost.slug : null
+
+    const nextPost = postIndex < posts.length - 1 ? posts[postIndex + 1] : null
+    nextPostSlug = nextPost ? nextPost.slug : null
+  }
 
   useEffect(() => {
     const handleKeydown = (e: globalThis.KeyboardEvent) => {
@@ -52,7 +50,7 @@ const BlogPost = () => {
     return () => {
       window.removeEventListener("keydown", handleKeydown)
     }
-  }, [navigate, nextPostSlug, prevPostSlug])
+  }, [navigate, prevPostSlug, nextPostSlug])
 
   if (isLoading) {
     return null
