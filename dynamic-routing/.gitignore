@@ -25,3 +25,5 @@ dist-ssr
 
 # App
 archive
+# Local Netlify folder
+.netlify
